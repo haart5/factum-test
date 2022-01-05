@@ -1,21 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { checkUser, logout, login } from '../../Features/userSlice';
 
-const Header = (props) => {
+const Header = () => {
 
-	const [session, setSession] = useState(null);
+	let navigate = useNavigate();
+
+	const dispatch = useDispatch();
+	const session = useSelector(checkUser);
+
+	const userSession = localStorage.getItem('userSession');
+	const passwordSession = localStorage.getItem('passwordSession');
+
 
 	useEffect(() => {
-		const user = localStorage.getItem('userSession');
-		setSession(user);
-	}, []);
+		if (userSession) {
+			dispatch(login({
+				user: userSession,
+				password: passwordSession,
+			}))
+		}
+	}, [])
 
-	const removeSession = () => {
-		localStorage.removeItem('userSession');
-		setSession(null);
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(logout());
+		navigate("/login", { replace: true });
 	};
 
 	return (
@@ -25,19 +39,17 @@ const Header = (props) => {
 					<Navbar.Brand href="#home">Factum Test</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
-						{session ?
+						{session.user !== null ?
 							<Nav className="me-auto">
 								<Link to='/' className='nav-link menuItems'>Home</Link>
 								<Link to='/employees' className='nav-link menuItems'>Employees</Link>
 								<Link to='/upload' className='nav-link menuItems'>Upload</Link>
-								<Link to='/login' className='nav-link menuItems' onClick={removeSession}>Close Session</Link>
+								<Link to='/login' className='nav-link menuItems' onClick={(e) => handleLogout(e)}>Close Session</Link>
 							</Nav>
 							:
 							<Nav className="me-auto">
 								<Link to='/' className='nav-link menuItems'>Home</Link>
 								<Link to='/login' className='nav-link menuItems'>Login</Link>
-								<Link to='/employees' className='nav-link menuItems'>Employees</Link>
-								<Link to='/upload' className='nav-link menuItems'>Upload</Link>
 							</Nav>
 						}
 					</Navbar.Collapse>

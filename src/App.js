@@ -14,9 +14,9 @@ import Header from './Components/Header/Header';
 export default function App() {
 
   return (
-    <Container>
-      <HashRouter>
-        <Header />
+    <HashRouter>
+      <Header />
+      <Container>
         <Routes>
           <Route exact path="/" element={
             <Home />
@@ -35,7 +35,7 @@ export default function App() {
             </PrivateRoute>
           } />
         </Routes>
-      </HashRouter>
-    </Container>
+      </Container>
+    </HashRouter>
   );
 }

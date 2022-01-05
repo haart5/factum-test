@@ -8,13 +8,21 @@ export const userSlice = createSlice({
 	reducers: {
 		login: (state, action) => {
 			state.user = action.payload;
+			localStorage.setItem('userSession', state.user.user);
+			localStorage.setItem('passwordSession', state.user.password);
 		},
-
+		logout: (state) => {
+			state.user = null;
+			localStorage.removeItem('userSession');
+			localStorage.removeItem('passwordSession');
+		},
 	}
 });
 
-export const { login } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
-export const selectUser = (state) => localStorage.getItem('userSession');
+export const checkUser = (state) => { 
+	return state.user;
+};
 
 export default userSlice.reducer;

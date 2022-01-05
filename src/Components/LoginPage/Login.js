@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-// import Auth from '../Auth/Auth';
 import { login } from '../../Features/userSlice';
 
 const Login = () => {
@@ -24,7 +23,6 @@ const Login = () => {
 				password: password,
 			})
 			);
-			localStorage.setItem('userSession', user);
 			navigate("/employees", { replace: true });
 		} else {
 			alert('El usuario no existe');
