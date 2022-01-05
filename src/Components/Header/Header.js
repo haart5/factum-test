@@ -16,7 +16,6 @@ const Header = () => {
 	const userSession = localStorage.getItem('userSession');
 	const passwordSession = localStorage.getItem('passwordSession');
 
-
 	useEffect(() => {
 		if (userSession) {
 			dispatch(login({
