@@ -25,7 +25,6 @@ function Employees() {
 
 	// getEmployees method to get the list of the employees and set the employees to the states.
 	const getEmployees = () => {
-		console.log('------------------------ EMPLOYEES -----------------------');
 		fetch(
 			`https://6edeayi7ch.execute-api.us-east-1.amazonaws.com/v1/examen/employees/arturo_martinez`,
 			{
@@ -34,7 +33,6 @@ function Employees() {
 		)
 			.then(res => res.json())
 			.then(response => {
-				console.log(response.data.employees);
 				setEmployees(response.data.employees);
 			})
 			.then(() => {
@@ -45,15 +43,10 @@ function Employees() {
 
 	//handleSubmit method to handle the submit button for the form.
 	const handleSubmit = (e) => {
-		e.preventDefault();
 
 		if (name === '' || lastName === '' || startDate === '') {
 			alert('Please, fill all the fields');
 		} else {
-			console.log('name: ' + name);
-			console.log('lastName: ' + lastName);
-			console.log('startDate: ' + moment(startDate));
-
 			const getName = name;
 			const getLastName = lastName;
 			const getStartDate = moment(startDate);
@@ -70,7 +63,7 @@ function Employees() {
 				})
 			}).then(data => {
 				alert('Saved employee');
-				getEmployees();
+				window.location.reload();
 			});
 		}
 	};
@@ -89,7 +82,7 @@ function Employees() {
 					<Form.Control
 						type="name"
 						placeholder="Your first name"
-						maxlength="30"
+						maxLength="30"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 					/>
@@ -100,7 +93,7 @@ function Employees() {
 					<Form.Control
 						type="lastName"
 						placeholder="Your last name"
-						maxlength="30"
+						maxLength="30"
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
 					/>
