@@ -5,7 +5,7 @@ function PrivateRoute({ children }) {
 
 	const user = localStorage.getItem('userSession');
 
-	return user ? children : <div><Navigate to="/login" /><Outlet /></div>;
+	return user ? children : <div><Navigate to="/" /><Outlet /></div>;
 }
 
 export default PrivateRoute
