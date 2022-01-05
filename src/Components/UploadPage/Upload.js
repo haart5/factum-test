@@ -26,7 +26,7 @@ function Upload() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(file);
-		console.log(preview);
+		// console.log(preview);
 	}
 
 	return (
@@ -34,7 +34,7 @@ function Upload() {
 			<h3 className='title'>
 				Upload page.
 			</h3>
-			<img src={preview} alt="" style={{objectFit: 'cover', width: '200px', height: '200px'}}/>
+			{ preview ? <img src={preview} alt="" style={{objectFit: 'cover', width: '200px', height: '200px'}}/> : '' }
 			<hr />
 			<Form onSubmit={(e) => handleSubmit(e)}>
 				<Form.Group className="mb-3" type="text">
