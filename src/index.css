@@ -12,3 +12,20 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+body {
+  background-color: #e2e2e2 !important;
+}
+
+.form-format {
+  background-color: #f8f9fa;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 0px 30px;
+  border-radius: 10px;
+  padding-bottom: 30px;
+}
+
+.header-format {
+  background-color: #20232a;
+}

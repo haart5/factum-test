@@ -30,7 +30,7 @@ const Login = () => {
 	};
 
 	return (
-		<div>
+		<div className="form-format">
 			<Form onSubmit={(e) => handleSubmit(e)}>
 				<h3 className='title'>Login page.</h3>
 				<hr/>

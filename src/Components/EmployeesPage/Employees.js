@@ -71,7 +71,7 @@ function Employees() {
 
 	// Return method to load all the component
 	return (
-		<div>
+		<div className="form-format">
 			<h3 className='title'>
 				Employees page.
 			</h3>

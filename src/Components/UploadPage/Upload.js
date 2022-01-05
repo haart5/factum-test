@@ -30,7 +30,7 @@ function Upload() {
 	}
 
 	return (
-		<div>
+		<div className="form-format">
 			<h3 className='title'>
 				Upload page.
 			</h3>

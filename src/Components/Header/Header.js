@@ -33,9 +33,9 @@ const Header = () => {
 
 	return (
 		<div>
-			<Navbar bg="light" expand="lg">
+			<Navbar bg="dark" expand="lg">
 				<Container>
-					<Navbar.Brand href="#home">Factum Test</Navbar.Brand>
+					<Navbar.Brand href="#home" style={{color: '#ffffff', fontWeight: 'bold'}}>Factum Test</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						{session.user !== null ?
