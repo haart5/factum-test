@@ -33,7 +33,7 @@ const Login = () => {
 		<div>
 			<Form onSubmit={(e) => handleSubmit(e)}>
 				<h3 className='title'>Login page.</h3>
-
+				<hr/>
 				<Form.Group className="mb-3" controlId="formBasicEmail">
 					<Form.Label>Username:</Form.Label>
 					<Form.Control
